@@ -1,31 +1,88 @@
-# react-input-wizard
+<p align="center">
+    <img src="./docs/assets/wizard.png" alt="React chat logo" width="120"/>
+</p>
+<h1 align="center" style="border-bottom: none;">Input Wizard</h1>
 
-> A lightweight input validator built for ReactJS
+<h4 align="center">A lightweight input validator built for ReactJS</h4>
 
 [![NPM](https://img.shields.io/npm/v/react-input-wizard.svg)](https://www.npmjs.com/package/react-input-wizard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Install
+Remember it is only an input validator, you must handle form submit events.
+
+- [Install](#install)
+- [How to use](#basic-usage)
+- [API](#api)
+    - [TextBox](#textbox)
+    - [Rules](#rules)
+
+## <a name="install"></a>Install
 
 ```bash
-npm install --save react-input-wizard
+npm install --save input-wizard
 ```
-
-## Usage
+## <a name="basic-usage"></a>Basic Usage
 
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-input-wizard'
+import TextBox from 'input-wizard'
 
-class Example extends Component {
+class InputExample extends Component {
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render () {
     return (
-      <MyComponent />
+      <div>
+        <div>Username</div>
+        <TextBox
+          //HTML input common parameters
+          name="username"
+          placeholder="Username"
+          required
+          //To controll the input value
+          value={this.state.username}
+          //A generic controll is all we need
+          onChange={this.handleChange.bind(this)}
+          //Rules that will be validated
+          rules={[
+            {
+              name: 'minLength',
+              value: 3,
+              message: "Your username must have at least 3 letters"
+            }
+          ]}
+        />
+      </div>
     )
   }
 }
 ```
 
+## <a name="api"></a>API
+
+### <a name="textbox"></a>TextBox
+
+This component is like a simple input that can revice all common html props.
+
+
+| Prop          | Type    | Default        | Description                                                                                                           |
+| ------------- | ------- | -------------- | --------------------------------------------------------------------------------------------------------------------- |
+| rules      | Array    | ```[{name, value, message}]``` | Pass the rules you want to be validated.<br><br> ```name:``` The name of the rule.<br>  ```value:``` A pattern or a data value for support the rule.<br> ```message:``` The custom message rule.||
+| errorCallback (optional) | func  | undefined             | If passed will return the current error found in the input                                                                     |
+
+### <a name="rules"></a>Rules
+
+|Rule   |Format   |Description   |
+|---|---|---|
+|required   | ```{name:"required", message:"Your custom message here"}```|Check if the string has a length of zero or is empty|
+|minLength   | ```{name:"minLength",value:the_length, message:"Your custom message here"}```|Check if the string's minimum length falls in the value passed. <br> ```value:``` The MIN String length.|
+|maxLength   | ```{name:"maxLength",value:the_length, message:"Your custom message here"}```|Check if the string's max length falls in the value passed. <br> ```value:``` The MAX String length.|
+|email   | ```{name:"email", message:"Your custom message here"}```|Check if the string is an email.|
+| pattern| ```{name:"pattern",value:your_regex, message:"Your custom message here"}```|check if string matches the pattern.<br> Try it: ```/^\d{5}(?:[-\s]\d{4})?$/```|
+|isNumber| ```{name:"isNumber", message:"Your custom message here"}```|Check if string is a number.|
+|custom| ```{name:"custom",value:YourValidator(input) => Boolean, message:"Your custom message here"}```|Create a custom validator here, your funtion must return ```true``` or ```false```.|
 ## License
 
 MIT © [PeterPimentel](https://github.com/PeterPimentel)

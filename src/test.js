@@ -1,7 +1,7 @@
-import ExampleComponent from './'
+import TextBox from './'
 
 describe('ExampleComponent', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(TextBox).toBeTruthy()
   })
 })
