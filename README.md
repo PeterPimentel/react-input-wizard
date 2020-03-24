@@ -18,7 +18,7 @@ Remember it is only an input validator, you must handle form submit events.
 ## <a name="install"></a>Install
 
 ```bash
-npm install --save input-wizard
+npm install --save react-input-wizard
 ```
 ## <a name="basic-usage"></a>Basic Usage
 

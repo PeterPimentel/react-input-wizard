@@ -1,6 +1,6 @@
 import TextBox from './'
 
-describe('ExampleComponent', () => {
+describe('Input Wizard Component', () => {
   it('is truthy', () => {
     expect(TextBox).toBeTruthy()
   })
