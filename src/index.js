@@ -3,15 +3,13 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.module.css'
 
-const validateRequired = (inputValue) => {
-  const trinned = inputValue.trim()
-  return trinned !== undefined && trinned !== '' && trinned !== null
-}
-const validateMinLength = (inputValue, size) => inputValue.length >= size
-const validateMaxLength = (inputValue, size) => inputValue.length <= size
+const isNotNull = value => value !== undefined && value !== null
+const validateRequired = (inputValue) => isNotNull(inputValue) && inputValue.trim() !== ''
+const validateMinLength = (inputValue, size) => isNotNull(inputValue) && String(inputValue).length >= size
+const validateMaxLength = (inputValue, size) => isNotNull(inputValue) && String(inputValue).length <= size
 const validatePattern = (inputValue, pattern) => new RegExp(pattern).test(inputValue)
 const validateCustomRule = (inputValue, fn) => fn(inputValue)
-const validateIsNumber = (inputValue) => !Number.isNaN(Number(inputValue))
+const validateIsNumber = (inputValue) => !Number.isNaN(Number(inputValue)) // null returns 0
 
 const validateEmail = (email) => {
   const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/

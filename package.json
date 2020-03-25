@@ -1,6 +1,6 @@
 {
   "name": "react-input-wizard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight input validator built for ReactJS",
   "author": "PeterPimentel",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "npm": ">=5"
   },
   "scripts": {
-    "test": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test": "cross-env CI=1 react-scripts test --env=jsdom --setupFiles ./setupTests.js",
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
@@ -35,6 +35,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.4",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16.1": "^1.6.2",
     "eslint": "^5.0.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
