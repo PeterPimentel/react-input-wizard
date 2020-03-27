@@ -15,6 +15,8 @@ Remember it is only an input validator, you must handle form submit events.
     - [TextBox](#textbox)
     - [Rules](#rules)
 
+[Codesandbox example](https://codesandbox.io/s/github/PeterPimentel/react-input-wizard/tree/master/example)
+
 ## <a name="install"></a>Install
 
 ```bash
