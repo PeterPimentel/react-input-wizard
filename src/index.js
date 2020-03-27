@@ -3,6 +3,16 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.module.css'
 
+const calculateDigit = (cpfBlock, multiplier) => {
+  const result = cpfBlock.reduce((acc, curr) => (acc + curr * multiplier--), 0)
+  const rest = result % 11
+  let digit = 11 - rest
+  if (digit > 9) {
+    digit = 0
+  }
+  return digit
+}
+
 const isNotNull = value => value !== undefined && value !== null
 const validateRequired = (inputValue) => isNotNull(inputValue) && inputValue.trim() !== ''
 const validateMinLength = (inputValue, size) => isNotNull(inputValue) && String(inputValue).length >= size
@@ -16,6 +26,36 @@ const validateEmail = (email) => {
   return regex.test(String(email).toLowerCase())
 }
 
+const validateCPF = (inputValue) => {
+  if (!isNotNull(inputValue)) return false
+
+  const blackList = [
+    '11111111111', '22222222222', '33333333333',
+    '44444444444', '55555555555', '66666666666',
+    '77777777777', '88888888888', '99999999999',
+    '00000000000'
+  ]
+
+  const CPF = inputValue.replace(/\D/g, '')
+
+  if (CPF.length < 11 || CPF.length > 11) return false
+
+  if (blackList.includes(CPF)) return false
+
+  const blockA = CPF.substr(0, 9).split('')
+  const firstVerificator = Number(CPF.charAt(9))
+  const digitA = calculateDigit(blockA, 10)
+
+  if (firstVerificator !== digitA) return false
+
+  const blockB = CPF.substr(0, 10).split('')
+  const secondVerificator = Number(CPF.charAt(10))
+  const digitB = calculateDigit(blockB, 11)
+  if (secondVerificator !== digitB) return false
+
+  return true
+}
+
 const DEFAULT_RULES = {
   'required': validateRequired,
   'minLength': validateMinLength,
@@ -23,7 +63,8 @@ const DEFAULT_RULES = {
   'pattern': validatePattern,
   'email': validateEmail,
   'custom': validateCustomRule,
-  'isNumber': validateIsNumber
+  'isNumber': validateIsNumber,
+  'CPF': validateCPF
 }
 
 export default class TextBox extends Component {

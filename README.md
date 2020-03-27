@@ -82,6 +82,7 @@ This component is like a simple input that can revice all common html props.
 |email   | ```{name:"email", message:"Your custom message here"}```|Check if the string is an email.|
 | pattern| ```{name:"pattern",value:your_regex, message:"Your custom message here"}```|check if string matches the pattern.<br> Try it: ```/^\d{5}(?:[-\s]\d{4})?$/```|
 |isNumber| ```{name:"isNumber", message:"Your custom message here"}```|Check if string is a number.|
+|CPF| ```{name:"CPF", message:"Your custom message here"}```|Check if a CPF is valid.|
 |custom| ```{name:"custom",value:YourValidator(input) => Boolean, message:"Your custom message here"}```|Create a custom validator here, your funtion must return ```true``` or ```false```.|
 ## License
 

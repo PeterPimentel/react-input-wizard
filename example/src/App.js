@@ -10,7 +10,8 @@ export default class App extends Component {
       email: "",
       username: "",
       age: "",
-      zipCode: ""
+      zipCode: "",
+      cpf: ""
     }
   }
 
@@ -68,6 +69,26 @@ export default class App extends Component {
                   {
                     name: 'email',
                     message: "This is not a valid email"
+                  }
+                ]}
+              />
+            </div>
+            <div>
+              <div className="input-label">CPF:*</div>
+              <TextBox
+                name="cpf"
+                placeholder="000.000.000-00"
+                required
+                value={this.state.cpf}
+                onChange={this.handleChange.bind(this)}
+                rules={[
+                  {
+                    name: 'required',
+                    message: "Required field"
+                  },
+                  {
+                    name: 'CPF',
+                    message: "This is not a valid CPF"
                   }
                 ]}
               />
