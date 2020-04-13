@@ -27,7 +27,8 @@ export default class App extends Component {
     return (
       <div className="container">
         <div className="box">
-          <h2>Basic Form validations</h2>
+          <h2>Input Wizard</h2>
+          <p>Basic Form validations</p>
           <hr className="divider" />
           <form>
 

@@ -23,6 +23,14 @@ body {
   background: #fafaff;
 }
 
+.box > h2 {
+  margin: 0;
+}
+
+.box > p {
+  margin: 0;
+}
+
 .divider {
   margin: 20px 0;
   height: 2px;
