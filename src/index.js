@@ -151,15 +151,15 @@ export default class TextBox extends Component {
     const { inputError } = this.state
     const errorClass = inputError.status ? styles.inputHasErro : ''
     return (
-      <div className={`invtr-container ${styles.root}`}>
+      <div className={`in-wizard-container ${styles.root}`}>
         <input
           {...rest}
-          className={`invtr-item ${styles.input} ${errorClass} ${className}`}
+          className={`in-wizard-item ${styles.input} ${errorClass} ${className}`}
           value={value}
           onChange={this.handleChange}
           onBlur={this.validate}
         />
-        <div className={`invtr-item-explain slide-in-top ${styles.labelHasErro}`}>
+        <div className={`in-wizard-item-explain ${styles.labelHasErro}`}>
           <span>{inputError.message}</span>
         </div>
       </div>

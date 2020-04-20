@@ -14,6 +14,7 @@ Remember it is only an input validator, you must handle form submit events.
 - [API](#api)
     - [TextBox](#textbox)
     - [Rules](#rules)
+- [Style](#style)
 
 [Codesandbox example](https://codesandbox.io/s/github/PeterPimentel/react-input-wizard/tree/master/example)
 
@@ -86,6 +87,17 @@ This component is like a simple input that can revice all common html props.
 |isNumber| ```{name:"isNumber", message:"Your custom message here"}```|Check if string is a number.|
 |CPF| ```{name:"CPF", message:"Your custom message here"}```|Check if a CPF is valid.|
 |custom| ```{name:"custom",value:YourValidator(input) => Boolean, message:"Your custom message here"}```|Create a custom validator here, your funtion must return ```true``` or ```false```.|
+
+### <a name="style"></a>Style
+We provid some css classes that will help you style your input as your wish.
+
+- in-wizard-container
+  - Root element: ```div```
+- in-wizard-item
+  - ```input```
+- in-wizard-item-explain
+  The ```div``` wrapping the error message  ```span```  
+
 ## License
 
 MIT © [PeterPimentel](https://github.com/PeterPimentel)

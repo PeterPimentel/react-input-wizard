@@ -35,6 +35,7 @@ export default class App extends Component {
             <div>
               <div className="input-label">Username:*</div>
               <TextBox
+                autocomplete="off"
                 name="username"
                 placeholder="Username"
                 required
